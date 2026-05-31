@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Else Ordu Masaj Salonu - Lüks Spa & Masaj Deneyimi</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome (İkonlar) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0b0c10;
+            --bg-card: #1f2833;
+            --gold-light: #c5a880;
+            --gold-dark: #947449;
+            --text-light: #ffffff;
+            --text-muted: #c5c6c7;
+            --whatsapp: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 168, 128, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.95)), url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-style: italic;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Global Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* Modern Grid Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            height: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(11, 12, 16, 0.8));
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Services Grid Layout */
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-light);
+            margin: 3rem 0 1.5rem 0;
+            border-left: 3px solid var(--gold-light);
+            padding-left: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: #151a22;
+            border: 1px solid rgba(197, 168, 128, 0.1);
+            padding: 2rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold-light);
+            transform: translateY(-5px);
+            background-color: #1b222c;
+        }
+
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .price-group {
+            text-align: right;
+        }
+
+        .service-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: block;
+        }
+
+        .service-duration {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.3rem;
+        }
+
+        .service-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .service-features li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .service-features li i {
+            color: var(--gold-light);
+            font-size: 0.8rem;
+        }
+
+        /* VIP Card Custom Style */
+        .vip-card {
+            background: linear-gradient(145deg, #191612, #261f16);
+            border: 1px solid rgba(197, 168, 128, 0.3);
+        }
+        .vip-card:hover {
+            background: linear-gradient(145deg, #221d17, #33291d);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .testimonial-item {
+            background-color: #11141a;
+            padding: 2.5rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .testimonial-item::before {
+            content: '“';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(197, 168, 128, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .stars {
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-user {
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: var(--gold-light);
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background-color: #11141a;
+            border: 1px solid rgba(197, 168, 128, 0.1);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 4px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-phone {
+            font-size: 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            display: block;
+            margin: 1.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .contact-phone:hover {
+            color: var(--gold-light);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .btn-gold {
+            background-color: var(--gold-light);
+            color: var(--bg-dark);
+        }
+
+        .btn-gold:hover {
+            background-color: #d9be98;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--gold-light);
+            color: var(--gold-light);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold-light);
+            color: var(--bg-dark);
+        }
+
+        /* Sticky WhatsApp */
+        .whatsapp-sticky {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+            z-index: 2000;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-sticky:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #060709;
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            border-top: 1px solid rgba(255,255,255,0.02);
+            letter-spacing: 1px;
+        }
+
+        /* Responsive UI */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1rem;
+            }
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            section {
+                padding: 4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menü Navigasyon -->
+    <nav>
+        <a href="#" class="logo">ELSE ORDU</a>
+        <div class="nav-links">
+            <a href="#">Anasayfa</a>
+            <a href="#galeri">Uygulamalarımız</a>
+            <a href="#hizmetler">Hizmetlerimiz</a>
+            <a href="#yorumlar">Yorumlar</a>
+            <a href="#iletisim">İletişim</a>
+        </div>
+    </nav>
+
+    <!-- Hero Giriş Alanı -->
+    <header class="hero">
+        <h2>Else Spa & Masaj</h2>
+        <p>Ordu'da profesyonel masaj teknikleri ve lüks vip odalarıyla yorgunluğunuza son verin, kendinizi ödüllendirin.</p>
+        <a href="https://wa.me/905446391052?text=Merhaba,%20Else%20Ordu%20Masaj%20Salonu%20için%20randevu%20almak%20istiyorum." class="btn btn-gold" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Randevu Alın
+        </a>
+    </header>
+
+    <!-- Görseller / Galeri Alanı (Sadece Profesyonel Masaj Uygulama Anları) -->
+    <section id="galeri">
+        <div class="section-header">
+            <h3 class="section-title">Uygulamalarımız</h3>
+            <p class="section-subtitle">Uzman terapistlerimiz tarafından uygulanan profesyonel masaj anları</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" alt="Profesyonel Masaj Uygulaması 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop" alt="Profesyonel Masaj Uygulaması 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop" alt="Profesyonel Masaj Uygulaması 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Hizmetler ve Fiyat Listesi -->
+    <section id="hizmetler" style="background-color: #0f1217;">
+        <div class="section-header">
+            <h3 class="section-title">Masaj Ritüelleri</h3>
+            <p class="section-subtitle">Uzman masözlerimiz tarafından uygulanan özel seanslar</p>
+        </div>
+
+        <h4 class="category-title">Standart Paketler</h4>
+        <div class="services-grid">
+            <!-- Hizmet 1 -->
+            <div class="service-card">
+                <div class="service-meta">
+                    <span class="service-name">Klasik Masaj</span>
+                    <div class="price-group">
+                        <span class="service-price">1600 ₺</span>
+                        <span class="service-duration"><i class="fa-regular fa-clock"></i> 40 Dk</span>
+                    </div>
+                </div>
+                <ul class="service-features">
+                    <li><i class="fa-solid fa-chevron-right"></i> Kese Seçeneği: +400 ₺ (Toplam 2000 ₺)</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Kan dolaşımını düzenler ve kasları gevşetir.</li>
+                </ul>
+            </div>
+
+            <!-- Hizmet 2 -->
+            <div class="service-card">
+                <div class="service-meta">
+                    <span class="service-name">Aromaterapi Masajı</span>
+                    <div class="price-group">
+                        <span class="service-price">2000 ₺</span>
+                        <span class="service-duration"><i class="fa-regular fa-clock"></i> 60 Dk</span>
+                    </div>
+                </div>
+                <ul class="service-features">
+                    <li><i class="fa-solid fa-chevron-right"></i> Kese Seçeneği: +400 ₺ (Toplam 2400 ₺)</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Bitkisel özlü yağlar ile dinlendirici terapi.</li>
+                </ul>
+            </div>
+
+            <!-- Hizmet 3 -->
+            <div class="service-card">
+                <div class="service-meta">
+                    <span class="service-name">Soft Masaj</span>
+                    <div class="price-group">
+                        <span class="service-price">2000 ₺</span>
+                        <span class="service-duration"><i class="fa-regular fa-clock"></i> 60 Dk</span>
+                    </div>
+                </div>
+                <ul class="service-features">
+                    <li><i class="fa-solid fa-chevron-right"></i> Hafif ve yavaş baskılı, tamamen rahatlama odaklı.</li>
+                </ul>
+            </div>
+
+            <!-- Hizmet 4 -->
+            <div class="service-card">
+                <div class="service-meta">
+                    <span class="service-name">Mix Masaj</span>
+                    <div class="price-group">
+                        <span class="service-price">2000 ₺</span>
+                        <span class="service-duration"><i class="fa-regular fa-clock"></i> 60 Dk</span>
+                    </div>
+                </div>
+                <ul class="service-features">
+                    <li><i class="fa-solid fa-chevron-right"></i> Farklı masaj tekniklerinin harmanlandığı özel seans.</li>
+                </ul>
+            </div>
+
+            <!-- Hizmet 5 -->
+            <div class="service-card">
+                <div class="service-meta">
+                    <span class="service-name">Sultan Masajı</span>
+                    <div class="price-group">
+                        <span class="service-price">3000 ₺</span>
+                        <span class="service-duration"><i class="fa-regular fa-clock"></i> 40 Dk</span>
+                    </div>
+                </div>
+                <ul class="service-features">
+                    <li><i class="fa-solid fa-chevron-right"></i> İki uzman masözün senkronize çalışması.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 class="category-title">VIP Odada VIP Paketler</h4>
+        <div class="services-grid">
+            <!-- VIP Hizmet 1 -->
+            <div class="service-card vip-card">
+                <div class="service-meta">
+                    <span class="service-name">VIP Full Mix Paket</span>
+                    <div class="price-group">
+                        <span class="service-price">3000 ₺</span>
+                        <span class="service-duration"><i class="fa-regular fa-clock"></i> 75 Dk</span>
+                    </div>
+                </div>
+                <ul class="service-features">
+                    <li><i class="fa-solid fa-star"></i> 60 Dakika Full Mix Masajı</li>
+                    <li><i class="fa-solid fa-star"></i> 15 Dakika Profesyonel Kese & Köpük</li>
+                    <li><i class="fa-solid fa-star"></i> Tamamen İzole VIP Oda Deneyimi</li>
+                </ul>
+            </div>
+
+            <!-- VIP Hizmet 2 -->
+            <div class="service-card vip-card">
+                <div class="service-meta">
+                    <span class="service-name">Jakuzili VIP Deneyim</span>
+                    <div class="price-group">
+                        <span class="service-price">4000 ₺</span>
+                        <span class="service-duration"><i class="fa-solid fa-crown"></i> Özel Seans</span>
+                    </div>
+                </div>
+                <ul class="service-features">
+                    <li><i class="fa-solid fa-star"></i> Özel Jakuzi Kullanımı ve Hidromasaj</li>
+                    <li><i class="fa-solid fa-star"></i> Üst Düzey Masaj Kombinasyonları</li>
+                    <li><i class="fa-solid fa-star"></i> Premium İkramlar & Maksimum Konfor</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Örnek Müşteri Yorumları -->
+    <section id="yorumlar">
+        <div class="section-header">
+            <h3 class="section-title">Misafir Deneyimleri</h3>
+            <p class="section-subtitle">Ziyaretçilerimizin gözünden Else Ordu</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-item">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Ordu'da böyle nezih ve profesyonel bir yer olduğunu bilmiyordum. Jakuzili VIP paketini denedik, temizlik ve hizmet standartları tek kelimeyle harika."</p>
+                <p class="testimonial-user">Hakan B.</p>
+            </div>
+
+            <div class="testimonial-item">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Sürekli masa başı çalıştığım için sırt ağrılarım vardı, 60 dakikalık mix masaj seansı aldım. Masözlerin uzmanlığı gerçekten üst seviyede."</p>
+                <p class="testimonial-user">Emre Ç.</p>
+            </div>
+
+            <div class="testimonial-item">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Aromaterapi seansındaki kokular ve ortamın sakinliği tüm stresimi aldı. Kese köpük kalitesi de çok iyiydi, düzenli geleceğim."</p>
+                <p class="testimonial-user">Caner Y.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim & Konum Alanı -->
+    <section id="iletisim" style="background-color: #0f1217;">
+        <div class="section-header">
+            <h3 class="section-title">Rezervasyon & Adres</h3>
+            <p class="section-subtitle">Size özel zaman ayırabilmemiz için gelmeden önce randevu alınız.</p>
+        </div>
+
+        <div class="contact-box">
+            <p style="font-size: 1.1rem; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px;">Doğrudan Arayın</p>
+            <a href="tel:05446391052" class="contact-phone">0544 639 10 52</a>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;"><i class="fa-solid fa-map-pin" style="color: var(--gold-light); margin-right: 6px;"></i> Altınordu / Ordu</p>
+            
+            <a href="https://share.google/MKbstH2aBr7kDICPD" class="btn btn-outline" target="_blank">
+                <i class="fa-solid fa-route"></i> Google Haritalarda Yol Tarifi Al
+            </a>
+        </div>
+    </section>
+
+    <!-- Sabit Sağ Alt WhatsApp Butonu -->
+    <a href="https://wa.me/905446391052?text=Merhaba,%20Else%20Ordu%20Masaj%20Salonu%20için%20randevu%20almak%20istiyorum." class="whatsapp-sticky" target="_blank" title="WhatsApp İletişim Hattı">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Else Ordu Masaj & Spa Merkezi. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body>
+</html>
